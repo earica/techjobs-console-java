@@ -61,7 +61,7 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
+                    printJobs(JobData.findByValue(searchTerm));
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -69,7 +69,7 @@ public class TechJobs {
         }
     }
 
-    // ﻿Returns the key of the selected item from the choices Dictionary
+    //Returns the key of the selected item from the choices Dictionary
     private static String getUserSelection(String menuHeader, HashMap<String, String> choices) {
 
         Integer choiceIdx;
@@ -111,6 +111,15 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        for(HashMap<String, String> job : someJobs){
+            System.out.println("********");
+            for(String jobKey : job.keySet()){
+                String value = job.get(jobKey);
+
+                System.out.println(jobKey + ": " + value);
+            }
+        }
     }
 }
+//Right now, it's looping through every column and printing the results for the row each time it finds a match in that row (5 times)
+//it needs to loop through the column (or row?) and print just once it finds a match
